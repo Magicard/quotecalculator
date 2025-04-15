@@ -7,7 +7,6 @@ use App\Services\QuoteResponse;
 
 class DeliveryQuoteCalculator
 {
-    // Calculate the quote based on the provided data
     public function calculate(QuoteData $data): QuoteResponse
     {
         $totalDistance = array_sum($data->distances);

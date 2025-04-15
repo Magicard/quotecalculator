@@ -27,7 +27,8 @@ class CalculateQuoteRequest extends FormRequest
             'distances' => 'required|array|min:1|max:5',
             'distances.*' => 'numeric|min:0',
             'cost_per_mile' => 'required|numeric|min:0',
-            'extra_person' => 'boolean',
+            'extra_person' => 'sometimes|boolean',
+            'extra_person_price' => 'sometimes|numeric|min:0',
         ];
     }
 }

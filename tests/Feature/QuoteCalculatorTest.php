@@ -22,11 +22,12 @@ it('calculates delivery quote correctly', function () {
     ]);
 });
 
-it('calculates delivery quote with extra person correctly', function () {
+it('calculates delivery quote with extra person correctly and custom price', function () {
     $payload = [
         'distances' => [10, 20],
         'cost_per_mile' => 2.00,
         'extra_person' => true,
+        'extra_person_price' => 30.00,
     ];
 
     $response = postJson('/api/quote', $payload);
@@ -36,8 +37,8 @@ it('calculates delivery quote with extra person correctly', function () {
         'dropOffs' => 2,
         'totalDistance' => 30,
         'costPerMile' => 2.0,
-        'extraPersonPrice' => 15.0,
-        'totalCost' => 75.0, // (30 * 2) + 15
+        'extraPersonPrice' => 30,
+        'totalCost' => 90, // (30 * 2) + 15
     ]);
 });
 

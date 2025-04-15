@@ -15,8 +15,8 @@ class QuoteController extends Controller
         $data = new QuoteData(
             distances: $request->input('distances'),
             costPerMile: $request->input('cost_per_mile'),
-            extraPerson: $request->input('extra_person'),
-            extraPersonPrice: 15.00
+            extraPerson: $request->input('extra_person', false),
+            extraPersonPrice: $request->input('extra_person_price', 15),
         );
 
         $quote = $calculator->calculate($data);
