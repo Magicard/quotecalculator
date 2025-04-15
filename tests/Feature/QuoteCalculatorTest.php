@@ -40,3 +40,19 @@ it('calculates delivery quote with extra person correctly', function () {
         'totalCost' => 75.0, // (30 * 2) + 15
     ]);
 });
+
+it('calculate route validation test', function () {
+    $payload = [
+        'distances' => null,
+        'cost_per_mile' => 'lots',
+        'extra_person' => 2,
+    ];
+
+    $response = postJson('/api/quote', $payload);
+    $response->assertStatus(422);
+    $response->assertJsonValidationErrors([
+        'distances' => 'The distances field is required.',
+        'extra_person' => 'The extra person field must be true or false.',
+        'cost_per_mile' => 'The cost per mile field must be a number.',
+    ]);
+});

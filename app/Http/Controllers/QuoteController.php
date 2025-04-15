@@ -9,6 +9,7 @@ use App\Http\Requests\CalculateQuoteRequest;
 
 class QuoteController extends Controller
 {
+    //Calculate the quote based on the request data
     public function calculate(CalculateQuoteRequest $request, DeliveryQuoteCalculator $calculator)
     {
         $data = new QuoteData(
