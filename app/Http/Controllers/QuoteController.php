@@ -11,16 +11,15 @@ class QuoteController extends Controller
 {
     public function calculate(CalculateQuoteRequest $request, DeliveryQuoteCalculator $calculator)
     {
-        $validated = $request->validated();
-
         $data = new QuoteData(
-            distances: $validated['distances'],
-            costPerMile: $validated['cost_per_mile'],
-            extraPerson: $validated['extra_person'] ?? false
+            distances: $request->input('distances'),
+            costPerMile: $request->input('cost_per_mile'),
+            extraPerson: $request->input('extra_person'),
+            extraPersonPrice: 15.00
         );
 
-        $result = $calculator->calculate($data);
+        $quote = $calculator->calculate($data);
 
-        return response()->json($result);
+        return response()->json($quote);
     }
 }

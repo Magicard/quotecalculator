@@ -8,6 +8,6 @@ class QuoteData
         public array $distances,
         public float $costPerMile,
         public bool $extraPerson = false,
-        public float $extraPersonPrice = 15.0,
+        public float $extraPersonPrice = 15,
     ) {}
 }

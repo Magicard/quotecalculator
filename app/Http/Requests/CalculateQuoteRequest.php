@@ -12,6 +12,7 @@ class CalculateQuoteRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        // Add authorization here, preferable setting up a Quote Policy
         return true;
     }
 

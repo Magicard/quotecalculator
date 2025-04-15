@@ -11,15 +11,14 @@ class DeliveryQuoteCalculator
     {
         $totalDistance = array_sum($data->distances);
         $baseCost = $totalDistance * $data->costPerMile;
-        $extra = $data->extraPerson ? $data->extraPersonPrice : 0;
-        $total = $baseCost + $extra;
+        $extra = $data->extraPerson ? $data->extraPersonPrice : 0.0;
 
         return new QuoteResponse(
             dropOffs: count($data->distances),
             totalDistance: $totalDistance,
             costPerMile: $data->costPerMile,
-            extraPersonPrice: $data->extraPerson ? $data->extraPersonPrice : 0,
-            totalCost: $total
+            extraPersonPrice: $extra,
+            totalCost: $baseCost + $extra
         );
     }
 }
