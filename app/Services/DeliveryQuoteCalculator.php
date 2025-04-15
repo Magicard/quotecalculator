@@ -5,8 +5,15 @@ namespace App\Services;
 use App\Services\QuoteData;
 use App\Services\QuoteResponse;
 
+/**
+ * Class DeliveryQuoteCalculator
+ */
 class DeliveryQuoteCalculator
 {
+    /**
+     * @param \App\Services\QuoteData $data
+     * @return \App\Services\QuoteResponse
+     */
     public function calculate(QuoteData $data): QuoteResponse
     {
         $totalDistance = array_sum($data->distances);
