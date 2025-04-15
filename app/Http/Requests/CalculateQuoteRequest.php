@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CalculateQuoteRequest extends FormRequest
@@ -11,18 +12,21 @@ class CalculateQuoteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'distances' => 'required|array|min:1|max:5',
+            'distances.*' => 'numeric|min:0',
+            'cost_per_mile' => 'required|numeric|min:0',
+            'extra_person' => 'boolean',
         ];
     }
 }

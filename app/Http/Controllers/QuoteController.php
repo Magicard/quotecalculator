@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\QuoteData;
 use Illuminate\Http\Request;
 use App\Services\DeliveryQuoteCalculator;
+use App\Http\Requests\CalculateQuoteRequest;
 
 class QuoteController extends Controller
 {
-    public function calculate(Request $request, DeliveryQuoteCalculator $calculator)
+    public function calculate(CalculateQuoteRequest $request, DeliveryQuoteCalculator $calculator)
     {
-        $validated = $request->validate([
-            'distances' => 'required|array|min:1|max:5',
-            'distances.*' => 'numeric|min:0',
-            'cost_per_mile' => 'required|numeric|min:0',
-            'extra_person' => 'boolean',
-        ]);
+        $validated = $request->validated();
 
         $data = new QuoteData(
             distances: $validated['distances'],
