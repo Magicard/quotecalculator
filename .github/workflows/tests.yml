@@ -39,8 +39,17 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
-      - name: Clear config and route cache
-        run: php artisan config:clear && php artisan route:clear
+      - name: Clear Cache
+        run: |
+          php artisan config:clear
+          php artisan cache:clear
+          php artisan route:clear
+
+      - name: Run Migrations
+        run: php artisan migrate --env=testing
+
+      - name: Set file permissions
+        run: sudo chmod -R 755 .
 
       - name: Run Pest
         run: vendor/bin/pest
