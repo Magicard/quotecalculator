@@ -38,6 +38,17 @@ The goal is to calculate delivery costs based on:
 
 ---
 
+## Files of note:
+
+- **app/Services/QuoteCalculatorService.php**: Main Logic
+- **app/Http/Controllers/QuoteController.php** Thin controller that delegates to the service
+- **app/Http/Requests/CalculateQuoteRequest.php** Handles validation.
+- **app/Services/QuoteData.php** DTO
+- **tests/Feature/QuoteCalculatorTest.php** Feature tests covering various scenarios
+- **.github/workflows/tests.yml** Github actions
+
+---
+
 ## 🛠️ Setup Instructions
 
 ### 1. Clone the repo
