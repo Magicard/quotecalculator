@@ -39,6 +39,9 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
+      - name: Clear config and route cache
+        run: php artisan config:clear && php artisan route:clear
+
       - name: Run Pest
         run: vendor/bin/pest
 
